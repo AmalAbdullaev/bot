@@ -1,2 +1,2 @@
-web: %main%.py
-worker: python %constants%.py
+web: main.py
+worker: python constants.py
