@@ -1,2 +1,1 @@
-web: main.py
-worker: python constants.py
+web: gunicorn bot.wsgi
