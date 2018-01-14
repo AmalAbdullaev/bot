@@ -2,6 +2,8 @@ import telebot
 import constants
 import random
 import os
+from copy import deepcopy
+import copy
 bot = telebot.TeleBot(constants.token)
 
 upd = bot.get_updates()
@@ -11,7 +13,7 @@ last_upd = upd[-1]
 
 
 city = {
-        "а": ["Архангельск",  "Астрахань", "Алушта",  "Алупка", "Амстердам",  "Абакан",  "Антверпен"],
+        "а": ["Архангельск" , "Алеппо", "Алушта",  "Алупка", "Амстердам",  "Абакан",  "Антверпен"],
         "б": [ "Бахчисараи", "Белгород",  "Белогорск", "Брянск",  "Барселона",  "Берлин",  "Берн"],
         "в": [ "Владивосток", "Волгоград",  "Вена",  "Венеция",  "Варшава",  "Винница",  "Воронеж"],
         "г": [ "Геленджик",  "Гамбург",  "Гагра",  "Гуково",  "Ганновер",  "Гданьск",  "Грозныи"],
@@ -38,7 +40,7 @@ city = {
         "щ": [ "Щёкино",  "Щёлково",  "Щербинка",  "Щецин",  "Щигры",  "ща",  "щу"],
         "э": [ "Эребру",  "Эрзурум",  "Эрмосильо",  "Эр-Рияд ",  "Эдинбург",  "Эльбасан",  "Эрдэнэт"],
         "ю": ["Южно-Сухокумск", "Южноуральск", "Юрга", "Юрмала",  "Юрга",  "Южно-Сахалинск", "Юджин"],
-        "я": ["Якутск",  "Ярославль", "Ялгуба", "Ялта", "Янгон",  "Яунде", "Ярцево"]
+        "я": ["Якутск",  "Яхрома", "Ялгуба", "Ялта", "Янгон",  "Яунде", "Ярцево"]
         }
 
 
@@ -48,7 +50,7 @@ def have_word(letter,cities):
     try:
         return cities.get(letter).pop()
     except:
-        return "Ты победил, я больше не знаю городов на эту букву"
+        return "!"
 
 
 @bot.message_handler(content_types=['text'])
@@ -56,154 +58,236 @@ def handle_text(message):
     global true_letter
     global cities
 
+
     if(message.text == "Давай играть"):
-        cities = city.copy()
+        cities = copy.deepcopy(city)
         true_letter = "Л"
         bot.send_message(message.chat.id, "Давай начнем, Стамбул , тебе на Л")
-
-
     elif(message.text[0] == true_letter[0]):
         if message.text[len(message.text)-1] == "а":
             word = have_word("а", cities)
-            bot.send_message(message.chat.id,word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word)-1].upper())
-            true_letter = word[len(word)-1].upper()
-            print(true_letter)
+            if(word!="!"):
+                bot.send_message(message.chat.id,word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word)-1].upper())
+                true_letter = word[len(word)-1].upper()
+                print(true_letter)
+            else:bot.send_message(message.chat.id,"Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text)-1] == "б":
             word = have_word("б", cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "в":
             word = have_word("в",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "г":
             word = have_word("г",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "д":
             word = have_word("д",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "е":
             word = have_word("е",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "ж":
             word = have_word("ж",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "з":
             word = have_word("з",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "и":
             word = have_word("и",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "к":
             word = have_word("к",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "л":
             word = have_word("л",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "м":
             word = have_word("м",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "н":
             word = have_word("н",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "о":
             word = have_word("о",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "п":
             word = have_word("п",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "р":
             word = have_word("р",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "с":
             word = have_word("с",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "т":
             word = have_word("т",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "у":
             word = have_word("у",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "ф":
             word = have_word("ф",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "х":
             word = have_word("х",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "ц":
             word = have_word("ц",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "ч":
             word = have_word("ч",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "ш":
             word = have_word("ш",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "щ":
             word = have_word("щ",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "э":
             word = have_word("э",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "ю":
             word = have_word("ю",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         elif message.text[len(message.text) - 1] == "я":
             word = have_word("я",cities)
-            bot.send_message(message.chat.id, word)
-            bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
-            true_letter = word[len(word) - 1].upper()
+            if (word != "!"):
+                bot.send_message(message.chat.id, word)
+                bot.send_message(message.chat.id, "Тебе на букву " + word[len(word) - 1].upper())
+                true_letter = word[len(word) - 1].upper()
+            else:
+                bot.send_message(message.chat.id, "Ты победил, я больше не знаю городов эту букву")
         else:
             bot.send_message(message.chat.id, "Давай другой город, у этого плохое окончание")
     else:
