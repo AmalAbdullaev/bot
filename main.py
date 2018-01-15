@@ -58,7 +58,7 @@ def handle_text(message):
     global true_letter
     global cities
 
-    if(message.text == "Давай играть"):
+    if(message.text == "/start"):
         cities = copy.deepcopy(city)
         true_letter = "Л"
         bot.send_message(message.chat.id, "Давай начнем, Стамбул , тебе на Л")
@@ -290,6 +290,6 @@ def handle_text(message):
         else:
             bot.send_message(message.chat.id, "Давай другой город, у этого плохое окончание")
     else:
-        bot.send_message(message.chat.id, "Нечестно играешь, давай нормально")
+        bot.send_message(message.chat.id, "Упс, если хочешь играть отправь команду /start")
 
 bot.polling(none_stop=True, interval=0)
