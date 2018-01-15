@@ -290,6 +290,6 @@ def handle_text(message):
         else:
             bot.send_message(message.chat.id, "Давай другой город, у этого плохое окончание")
     else:
-        bot.send_message(message.chat.id, "Упс, если хочешь играть отправь команду /start")
+        bot.send_message(message.chat.id, "Тебе со мной не тягаться, если хочешь играть отправь команду /start")
 
 bot.polling(none_stop=True, interval=0)
