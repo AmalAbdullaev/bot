@@ -294,4 +294,6 @@ def handle_text(message):
                 bot.send_message(message.chat.id, "Давай другой город, у этого плохое окончание")
         else:
             bot.send_message(message.chat.id, "Нечестно играешь, давай нормально")
+    else:
+        bot.send_message(message.chat.id, "Не дерзи, если хочешь поговорить отправь команду /start")
 bot.polling(none_stop=True, interval=0)
