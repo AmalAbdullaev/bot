@@ -58,7 +58,9 @@ def handle_text(message):
     global true_letter
     global cities
 
-
+    if (message.text == "/start"):
+        bot.send_message(message.chat.id, "Я называю город, вы говорите на последнюю букву - и так далее. Мягкий знак и буква Ы ,"
+                                          "не считаются. Только играй честно, если готов напиши - Давай играть")
     if(message.text == "Давай играть"):
         cities = copy.deepcopy(city)
         true_letter = "Л"
