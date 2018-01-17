@@ -18,9 +18,9 @@ def handle_text(message):
 
         if(message.text == "/start"):
             bot.send_message(message.chat.id, "Отправь мне город, города не должны начинаться и заканчиваться Ь,Й,Ы,Ъ, если я  назвал такой город"
-                                              "значит я проиграл"
+                                              " значит я продул, да да и такое бывает "
                                               ""
-                                              "жми /start и будем заново ")
+                                              " жми /start и будем заново ")
             results.clear()
             letter = "!"
         elif((letter==client_city[0] or letter== "!") and client_city in cities.get(client_city[0].lower()) and client_city not in results ):
@@ -35,7 +35,7 @@ def handle_text(message):
             results.append(my_city)
 
         else:
-            bot.send_message(message.chat.id,"Ты проиграл, давай сначала, пиши /start и начнем")
+            bot.send_message(message.chat.id,"Тебе со мной не тягаться, ты проиграл, давай сначала, пиши /start и начнем")
             results.clear()
             letter = "!"
 
