@@ -84,7 +84,6 @@ arr26 = str26.split(' ')
 
 
 
-
 city = {
         "а":  arr1,
         "б":   arr2,
