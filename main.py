@@ -41,6 +41,6 @@ def handle_text(message):
         cities = copy.deepcopy(goroda.city)
     except(AttributeError):
         bot.send_message(message.chat.id,
-                         "Я же просил")
+                         "Я же просил, города не должны начинаться и заканчиваться Ь,Й,Ы,Ъ!")
 
 bot.polling(none_stop=True, interval=0)
