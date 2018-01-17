@@ -36,7 +36,7 @@ def handle_text(message):
             results.clear()
             letter = "!"
 
-    except(IndexError):
+    except(IndexError or AttributeError):
         bot.send_message(message.chat.id, "Я проиграл, больше не знаю городов на эту букву, давай еще, пиши /start и начнем")
         cities = copy.deepcopy(goroda.city)
 
