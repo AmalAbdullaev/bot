@@ -22,7 +22,11 @@ def handle_text(message):
             letter = "!"
         elif((letter==client_city[0] or letter== "!") and client_city in cities.get(client_city[0].lower()) and client_city not in results ):
             my_city = cities.get(client_city[len(client_city)-1].lower()).pop()
+            if(my_city[0]!=client_city[len(client_city)-1]):
+                my_city = cities.get(client_city[len(client_city) - 1].lower()).pop()
             letter = my_city[len(my_city) - 1].upper()
+            if(letter=="ь" or letter == "ы" or letter=="ъ" or letter=="й"):
+                letter = my_city[len(my_city) - 2].upper()
             bot.send_message(message.chat.id, my_city)
             results.append(message.text)
             results.append(my_city)
