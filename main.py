@@ -36,9 +36,11 @@ def handle_text(message):
             results.clear()
             letter = "!"
 
-    except(IndexError or AttributeError):
+    except(IndexError):
         bot.send_message(message.chat.id, "Я проиграл, больше не знаю городов на эту букву, давай еще, пиши /start и начнем")
         cities = copy.deepcopy(goroda.city)
-
+    except(AttributeError):
+        bot.send_message(message.chat.id,
+                         "Я же просил")
 
 bot.polling(none_stop=True, interval=0)
