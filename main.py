@@ -17,7 +17,10 @@ def handle_text(message):
         client_city = message.text
 
         if(message.text == "/start"):
-            bot.send_message(message.chat.id, "Отправь мне город, города не должны начинаться и заканчиваться Ь,Й,Ы,Ъ! ")
+            bot.send_message(message.chat.id, "Отправь мне город, города не должны начинаться и заканчиваться Ь,Й,Ы,Ъ, если я  назвал такой город"
+                                              "значит я проиграл"
+                                              ""
+                                              "жми /start и будем заново ")
             results.clear()
             letter = "!"
         elif((letter==client_city[0] or letter== "!") and client_city in cities.get(client_city[0].lower()) and client_city not in results ):
@@ -32,7 +35,7 @@ def handle_text(message):
             results.append(my_city)
 
         else:
-            bot.send_message(message.chat.id,"Ты продул, давай сначала, пиши /start и начнем")
+            bot.send_message(message.chat.id,"Ты проиграл, давай сначала, пиши /start и начнем")
             results.clear()
             letter = "!"
 
@@ -41,6 +44,6 @@ def handle_text(message):
         cities = copy.deepcopy(goroda.city)
     except(AttributeError):
         bot.send_message(message.chat.id,
-                         "Я же просил, города не должны начинаться и заканчиваться Ь,Й,Ы,Ъ!")
+                         "Котики, пожалуйста, не называйте города которые начинаются и заканчиватся на Ь,Й,Ы,Ъ")
 
 bot.polling(none_stop=True, interval=0)
