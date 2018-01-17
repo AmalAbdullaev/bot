@@ -26,9 +26,7 @@ def handle_text(message):
             bot.send_message(message.chat.id, my_city)
             results.append(message.text)
             results.append(my_city)
-            print(results)
-            print(letter)
-            print(client_city[0])
+
         else:
             bot.send_message(message.chat.id,"Ты продул, давай сначала, пиши /start и начнем")
             results.clear()
