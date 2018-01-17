@@ -20,7 +20,7 @@ def handle_text(message):
             bot.send_message(message.chat.id, "Отправь мне город, города не должны начинаться и заканчиваться Ь,Й,Ы,Ъ, если я  назвал такой город"
                                               " значит я продул, да да и такое бывает "
                                               ""
-                                              " жми /start и будем заново ")
+                                              " В любом случае жми /start и будем играть ")
             results.clear()
             letter = "!"
         elif((letter==client_city[0] or letter== "!") and client_city in cities.get(client_city[0].lower()) and client_city not in results ):
