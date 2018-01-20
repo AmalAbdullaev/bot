@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/file_city/а.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/б.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/в.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/г.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/д.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/е.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/ж.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/з.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/и.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/к.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/л.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/м.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/н.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/о.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/п.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/р.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/с.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/т.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/у.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/ф.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/х.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/ц.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/ч.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/э.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/ю.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/file_city/я.txt" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/test.html" charset="ISO-8859-1" />
+  <component name="Encoding" defaultCharsetForPropertiesFiles="windows-1251">
+    <file url="file://$PROJECT_DIR$/city.txt" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/test.py" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>
