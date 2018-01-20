@@ -31,7 +31,9 @@ def handle_text(message):
     global file
     try:
         if (message.text == "/start"):
-            bot.send_message(message.chat.id, "Поехали, посмотрим на что ты способен  ")
+            bot.send_message(message.chat.id, "Правила игры: Ты называешь город, потом"
+                                              "я на последнюю букву,потом ты и так далее. В ответ на города которые "
+                                              "закачиваются на Ь,Ъ,Ы   отправляем города на предыдущую букву. Поехали, посмотрим на что ты способен  ")
             send.clear()
             send.append("!")
             file = open("city.txt",'r',encoding = "windows-1251")
