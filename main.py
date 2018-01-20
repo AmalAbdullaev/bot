@@ -55,7 +55,7 @@ def handle_text(message):
             bot.send_message(message.chat.id, "Запомнил")
 
         else:
-            bot.send_message(message.chat.id, "Тебе со мной не тягаться, ты проиграл")
+            bot.send_message(message.chat.id, "Тебе со мной не тягаться, ты проиграл,если хочешь еще отправь /start")
     except(IndexError):
         bot.send_message("Я проиграл")
 

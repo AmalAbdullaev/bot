@@ -1,5 +1,0 @@
-file = open("3.txt")
-s = file.read()
-file2 = open("2.txt",'w')
-print(s)
-file2.write(s)
