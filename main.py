@@ -58,6 +58,8 @@ def handle_text(message):
 
         else:
             bot.send_message(message.chat.id, "Тебе со мной не тягаться, ты проиграл")
+    except(IndexError):
+        bot.send_message("Я проиграл")
     except:
         bot.send_message(message.chat.id, "Я проиграл, больше не знаю городов на эту букву")
 
