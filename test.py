@@ -1,4 +1,4 @@
-file = open("3.txt",encoding='utf-8')
+file = open("3.txt")
 s = file.read()
 file2 = open("2.txt",'w')
 print(s)
