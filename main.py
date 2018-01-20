@@ -1,7 +1,5 @@
 import telebot
 import constants
-import goroda
-import copy
 
 bot = telebot.TeleBot(constants.token)
 upd = bot.get_updates()
@@ -36,7 +34,7 @@ def handle_text(message):
             bot.send_message(message.chat.id, "Поехали, посмотрим на что ты способен  ")
             send.clear()
             send.append("!")
-            file = open("city.txt",'r+', encoding="latin-1")
+            file = open("city.txt",'r+', errors='ignore')
             cities = file.read()
             all_cities.clear()
         elif(cities.find(message.text)!=-1 and out(send,message) and message.text not in all_cities):
