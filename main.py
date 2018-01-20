@@ -6,9 +6,9 @@ import copy
 bot = telebot.TeleBot(constants.token)
 upd = bot.get_updates()
 last_upd = upd[-1]
-file = open("city.txt",'br', encoding="latin-1")
+file = open("city.txt",'br', errors='ignore')
 cities = ""
-print(cities)
+
 
 send = ["!"]
 all_cities = []
