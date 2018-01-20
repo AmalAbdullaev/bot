@@ -4,7 +4,7 @@ import constants
 bot = telebot.TeleBot(constants.token)
 upd = bot.get_updates()
 last_upd = upd[-1]
-file = open("city.txt",'r', encoding = "ISO-8859-1")
+file = open("city.txt",'r', encoding = "windows-1251")
 cities = ""
 
 
@@ -34,7 +34,7 @@ def handle_text(message):
             bot.send_message(message.chat.id, "Поехали, посмотрим на что ты способен  ")
             send.clear()
             send.append("!")
-            file = open("city.txt",'r',encoding = "ISO-8859-1")
+            file = open("city.txt",'r',encoding = "windows-1251")
             cities = file.read()
             all_cities.clear()
         elif(cities.find(message.text)!=-1 and out(send,message) and message.text not in all_cities):
