@@ -6,7 +6,7 @@ import copy
 bot = telebot.TeleBot(constants.token)
 upd = bot.get_updates()
 last_upd = upd[-1]
-file = open("utf8_file.txt",'r+')
+file = open("city.txt",'br')
 cities = ""
 print(cities)
 
