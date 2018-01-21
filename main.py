@@ -56,6 +56,7 @@ def handle_text(message):
             city = message.text[1:]
             file2.write("\n" + city)
             bot.send_message(message.chat.id, "Запомнил")
+            file2.close()
         else:
             bot.send_message(message.chat.id, "Тебе со мной не тягаться, ты проиграл,если хочешь еще отправь /start")
     except(IndexError):
