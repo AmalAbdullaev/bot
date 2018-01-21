@@ -1,9 +1,14 @@
 import telebot
 import constants
 
-bot = telebot.TeleBot(constants.token)
-upd = bot.get_updates()
-last_upd = upd[-1]
+try:
+    bot = telebot.TeleBot(constants.token)
+    upd = bot.get_updates()
+    last_upd = upd[-1]
+except:
+    print("waiting...")
+
+
 file = open("city.txt",'r', encoding = "windows-1251")
 cities = ""
 
