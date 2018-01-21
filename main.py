@@ -9,7 +9,7 @@ except:
     print("waiting...")
 
 
-file = open("city.txt",'r', encoding = "windows-1251")
+file = open("city.txt",'r+', encoding = "windows-1251")
 cities = ""
 
 
@@ -41,7 +41,7 @@ def handle_text(message):
                                               "закачиваются на Ь,Ъ,Ы   отправляем города на предыдущую букву. Поехали, посмотрим на что ты способен  ")
             send.clear()
             send.append("!")
-            file = open("city.txt",'r',encoding = "windows-1251")
+            file = open("city.txt",'r+',encoding = "windows-1251")
             cities = file.read()
             all_cities.clear()
         elif(cities.find(message.text)!=-1 and out(send,message) and message.text not in all_cities):
@@ -57,11 +57,9 @@ def handle_text(message):
             all_cities.append(message.text)
             cities = cities.replace(answer_city,'')
         elif(message.text[0] == "."):
-            file2 = open("city.txt",'w')
             city = message.text[1:]
-            file2.write("\n" + city)
+            file.write("\n" + city)
             bot.send_message(message.chat.id, "Запомнил")
-            file2.close()
         else:
             bot.send_message(message.chat.id, "Тебе со мной не тягаться, ты проиграл,если хочешь еще отправь /start")
     except(IndexError):
